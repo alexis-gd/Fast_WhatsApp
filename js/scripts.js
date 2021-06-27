@@ -1,3 +1,7 @@
+document.getElementById('in').addEventListener('keyup', function(event) {
+    const on = document.getElementById('on');
+    on.innerText = this.value;
+});
 document.getElementById('bs').addEventListener('click', function(event) {
     event.preventDefault();
     const b = this;
