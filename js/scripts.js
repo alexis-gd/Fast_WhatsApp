@@ -15,7 +15,11 @@ document.getElementById('bs').addEventListener('click', function(event) {
 });
 
 const R = (n, m) => {
-    window.open("https://web.whatsapp.com/send?phone=521" + n.value + "&text=" + m.value + "&app_absent=0", "_blank");
+    if (DM()) {
+        window.open("https://api.whatsapp.com/send?phone=521" + n.value + "&text=" + m.value + "&app_absent=0", "_blank");
+    } else {
+        window.open("https://web.whatsapp.com/send?phone=521" + n.value + "&text=" + m.value + "&app_absent=0", "_blank");
+    }
     n.value = "";
     m.value = "";
 }
@@ -29,5 +33,21 @@ const N = (b, n, m) => {
         n.placeholder = "# Ingresa el numero"
         m.placeholder = "Escribe tu mensaje..."
         b.firstChild.nodeValue = "¡Listo! Enviar ❤️";
+    });
+}
+
+function DM() {
+    const tm = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    return tm.some((tmi) => {
+        return navigator.userAgent.match(tmi);
     });
 }
