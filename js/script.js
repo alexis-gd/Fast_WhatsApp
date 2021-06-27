@@ -1,20 +1,23 @@
+// Variables
+const on = document.getElementById('on');
+const n = document.getElementById('in');
+const m = document.getElementById('m');
+
+// DOM
 document.getElementById('in').addEventListener('keyup', function(event) {
-    const on = document.getElementById('on');
     on.innerText = this.value;
 });
 document.getElementById('bs').addEventListener('click', function(event) {
     event.preventDefault();
-    const b = this;
-    const n = document.getElementById('in');
-    const m = document.getElementById('m');
-    if (n.value == "" || m.value == "") {
-        N(b, n, m);
+    if (n.value == "" || n.value.length != 10 || m.value == "") {
+        N(this, n, m);
     } else {
-        R(n, m);
+        S(n, m, on);
     }
 });
 
-const R = (n, m) => {
+// Functions
+const S = (n, m) => {
     if (DM()) {
         window.open("https://api.whatsapp.com/send?phone=521" + n.value + "&text=" + m.value + "&app_absent=0", "_blank");
     } else {
@@ -22,7 +25,9 @@ const R = (n, m) => {
     }
     n.value = "";
     m.value = "";
+    on.innerText = "";
 }
+
 const N = (b, n, m) => {
     b.style.animation = "shake 0.5s ease";
     n.placeholder = "Vacio"
