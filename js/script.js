@@ -31,13 +31,11 @@ const S = (n, m) => {
 const N = (b, n, m) => {
     b.style.animation = "shake 0.5s ease";
     n.placeholder = "Vacio"
-    m.placeholder = "Vacio"
-    b.firstChild.nodeValue = "¡Listo! Enviar 💔";
+    m.placeholder = "Vacio"    
     b.addEventListener("animationend", () => {
         b.style.animation = "";
         n.placeholder = "# Ingresa el numero"
         m.placeholder = "Escribe tu mensaje..."
-        b.firstChild.nodeValue = "¡Listo! Enviar ❤️";
     });
 }
 
