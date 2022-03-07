@@ -4,12 +4,12 @@ const n = document.getElementById('in');
 const m = document.getElementById('m');
 
 // DOM
-document.getElementById('in').addEventListener('keyup', function(event) {
+document.getElementById('in').addEventListener('keyup', function (event) {
     on.innerText = this.value;
 });
-document.getElementById('bs').addEventListener('click', function(event) {
+document.getElementById('bs').addEventListener('click', function (event) {
     event.preventDefault();
-    if (n.value == "" || n.value.length != 10 || m.value == "") {
+    if (n.value == "" || n.value.length != 10) {
         N(this, n, m);
     } else {
         S(n, m, on);
@@ -23,19 +23,15 @@ const S = (n, m) => {
     } else {
         window.open("https://web.whatsapp.com/send?phone=521" + n.value + "&text=" + m.value + "&app_absent=0", "_blank");
     }
-    n.value = "";
-    m.value = "";
     on.innerText = "";
 }
 
 const N = (b, n, m) => {
     b.style.animation = "shake 0.5s ease";
     n.placeholder = "Vacio"
-    m.placeholder = "Vacio"    
     b.addEventListener("animationend", () => {
         b.style.animation = "";
-        n.placeholder = "# Ingresa el numero"
-        m.placeholder = "Escribe tu mensaje..."
+        n.placeholder = "# Ingresa el número"
     });
 }
 
