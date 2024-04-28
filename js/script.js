@@ -4,8 +4,9 @@ const n = document.getElementById('in');
 const m = document.getElementById('m');
 
 // DOM
-document.getElementById('in').addEventListener('keyup', function (event) {
-    on.innerText = this.value;
+document.getElementById('in').addEventListener('keyup', function () {
+    this.value = this.value.trim().replace(/\s/g, "");
+    on.innerText = this.value.trim().replace(/\s/g, "");
 });
 document.getElementById('bs').addEventListener('click', function (event) {
     event.preventDefault();
